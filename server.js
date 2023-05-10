@@ -9,6 +9,7 @@ import express from "express";
 import { engine } from 'express-handlebars';
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
+import router from "./routes/subjects.js";
 
 dotenv.config();
 
@@ -22,6 +23,12 @@ app.set('view engine', 'handlebars');
 app.set('views', './templates');
 
 // const PORT = 5000;
+
+/*app.get('/', (req, res) =>{
+    res.render('departments/all');
+})*/
+
+app.use('/subjects', router);
 
 app.listen(process.env.PORT, ()=>{
     console.log(`Started the application on http://localhost: ${process.env.PORT}`);
